@@ -103,7 +103,7 @@ set shiftwidth=4
 :if !exists("autocommands_loaded")
 :  let autocommands_loaded = 1
 
-"程序文件打开TagList
+"程序文件
 ":  au BufNewFile,BufRead *.c,*.cpp,*.cs,*.h,*.py :Tlist
 :  au BufNewFile,BufRead *.c,*.cpp,*.cs,*.h,*.py :set fdm=syntax
 :  au BufNewFile,BufRead *.c,*.cpp,*.cs,*.h,*.py :set foldlevel=100
@@ -131,11 +131,6 @@ set wrap
 set tags=tags; 
 set autochdir 
 
-"tarbar
-noremap tb :TagbarToggle<CR> 
-noremap tl :TagbarToggle<CR> 
-let g:tagbar_ctags_bin = 'ctags'
-let g:tagbar_width = 40
 
 "恢复Ctrl-A增加数字
 unmap <C-A>
@@ -147,12 +142,6 @@ inoremap <F12> <ESC><C-W>w
 noremap <F11> <C-W>W
 inoremap <F11> <ESC><C-W>W
 
-"NERD-tree
-let NERDChristmasTree=1 
-let NERDTreeCaseSensitiveSort=1
-let NERDTreeWinSize=24
-let NERDTreeShowBookmarks=1  
-noremap nm :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""python""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -167,5 +156,47 @@ autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^
 " F5运行脚本
 autocmd BufRead *.py nmap <F5> :!python %<CR>
 
+""""""""""""""""""""""""""""""vundle for plugins"""""""""""""""""""""""""""""""""""""
+filetype off                  " required!
+
+" install vundle: git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" install plugins: :BundleInstall
+" 在安装插件过程中，如果要求输入github的账号密码，那就说明插件的名字写错了。
+" 到这里查 http://vim-scripts.org/vim/scripts.html
+" uninstall unnesseccery plugins: :BundleClean
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" [START] my plugins here
+Bundle 'SuperTab-continued.'
+Bundle 'a.vim'
+Bundle 'minibufexpl.vim'
+Bundle 'The-NERD-tree'
+Bundle 'Align.vim'
+Bundle 'Tagbar'
+Bundle 'mark.vim'
+Bundle 'FencView.vim'
+" [END] my plugins here
+
+filetype plugin indent on     " required!
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"NERD-tree
+let NERDChristmasTree=1 
+let NERDTreeCaseSensitiveSort=1
+let NERDTreeWinSize=24
+let NERDTreeShowBookmarks=1  
+noremap nm :NERDTreeToggle<CR>
+
+"tarbar
+noremap tb :TagbarToggle<CR> 
+noremap tl :TagbarToggle<CR> 
+let g:tagbar_ctags_bin = 'ctags'
+let g:tagbar_width = 40
+
 
