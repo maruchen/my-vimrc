@@ -75,6 +75,8 @@ set number
 "save original file
 "set patchmode=.orig
 
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 set cursorline
 set incsearch
