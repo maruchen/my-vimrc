@@ -67,10 +67,10 @@ set number
 "set nobackup
 
 "backup in the directory
-set backupdir=$VIM/backupDir
+"set backupdir=$VIM/backupDir
 
 "用专门的文件夹存放swp临时交换文件
-:set dir=$VIM/swp
+":set dir=$VIM/swp
 
 "save original file
 "set patchmode=.orig
@@ -80,6 +80,13 @@ set cursorline
 set incsearch
 set ignorecase
 set smartcase
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+   syntax on
+   set hlsearch
+endif
 
 "status line
 set laststatus=2
